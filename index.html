@@ -7,8 +7,8 @@
 <style>
   :root{
     --ink:#0c1b24;
-    --deep:#0e2431;
-    --mist:#5c7683;
+    --deep:#102836;
+    --mist:#627d8a;
     --cream:#f3efe6;
     --sand:#d8c9a3;
     --line:rgba(243,239,230,.14);
@@ -24,108 +24,83 @@
   }
   .serif{font-family:Georgia,"Times New Roman","Songti SC","SimSun",serif}
 
-  /* ---------- 顶部进度条 ---------- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--sand);z-index:99;transition:width .1s linear}
 
   /* ---------- 封面 ---------- */
-  .hero{
-    position:relative;height:100vh;min-height:560px;
-    display:flex;align-items:flex-end;justify-content:center;
-    overflow:hidden;
-  }
+  .hero{position:relative;height:100vh;min-height:560px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
   .hero .bg{position:absolute;inset:0;background:url("img/cover-coast.jpg") center/cover no-repeat;animation:heroZoom 18s ease-out forwards}
-  @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,27,36,.15) 30%,rgba(12,27,36,.78) 88%)}
-  .hero-inner{position:relative;text-align:center;padding-bottom:11vh;width:100%}
-  .hero .eyebrow{letter-spacing:.55em;font-size:12px;color:var(--sand);opacity:.9;text-indent:.55em}
-  .hero h1{font-size:clamp(64px,15vw,150px);font-weight:400;letter-spacing:.18em;text-indent:.18em;line-height:1.1;margin:12px 0 8px}
+  @keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,27,36,.12) 35%,rgba(12,27,36,.8) 90%)}
+  .hero-inner{position:relative;text-align:center;padding-bottom:12vh;width:100%}
+  .hero .eyebrow{letter-spacing:.55em;font-size:12px;color:var(--sand);text-indent:.55em}
+  .hero h1{font-size:clamp(64px,15vw,150px);font-weight:400;letter-spacing:.18em;text-indent:.18em;line-height:1.1;margin:14px 0 10px}
   .hero .sub{font-size:clamp(14px,2.2vw,17px);color:rgba(243,239,230,.75);letter-spacing:.3em;text-indent:.3em}
   .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:1px;height:44px;background:linear-gradient(var(--sand),transparent);animation:hint 2s infinite}
   @keyframes hint{0%{opacity:0}40%{opacity:1}100%{opacity:0;transform:translate(-50%,14px)}}
 
-  /* ---------- 通用节 ---------- */
-  section{max-width:1180px;margin:0 auto;padding:110px 26px 30px}
-  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:52px;border-bottom:1px solid var(--line);padding-bottom:22px}
+  /* ---------- 节 ---------- */
+  section{max-width:1120px;margin:0 auto;padding:110px 28px 20px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:50px;border-bottom:1px solid var(--line);padding-bottom:20px}
   .sec-no{font-size:13px;color:var(--sand);letter-spacing:.2em}
   .sec-title{font-size:clamp(26px,4.5vw,40px);font-weight:400;letter-spacing:.12em}
   .sec-note{margin-left:auto;color:var(--mist);font-size:13px;letter-spacing:.1em}
 
-  .cap{color:var(--mist);font-size:14px;line-height:1.9;letter-spacing:.06em}
-  .caption strong{color:var(--cream);font-weight:500}
+  .cap{color:var(--mist);font-size:14.5px;line-height:2.1;letter-spacing:.05em}
 
-  /* ---------- 图片与动画 ---------- */
-  figure{position:relative;overflow:hidden;border-radius:4px;background:var(--deep)}
-  figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  figure:hover img{transform:scale(1.045)}
+  /* ---------- 图片（原始比例，不裁切） ---------- */
+  figure{position:relative;overflow:hidden;border-radius:4px;background:var(--deep);cursor:zoom-in}
+  figure img{display:block;width:100%;height:auto;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  figure:hover img{transform:scale(1.03)}
   figcaption{
-    position:absolute;left:0;right:0;bottom:0;padding:38px 16px 13px;
-    font-size:12.5px;letter-spacing:.08em;color:rgba(243,239,230,.85);
-    background:linear-gradient(transparent,rgba(12,27,36,.72));
+    position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;
+    font-size:12.5px;letter-spacing:.08em;color:rgba(243,239,230,.88);
+    background:linear-gradient(transparent,rgba(12,27,36,.75));
     opacity:0;transform:translateY(8px);transition:.45s ease;
   }
   figure:hover figcaption{opacity:1;transform:none}
 
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
 
   /* 布局 */
-  .duo{display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
-  .duo figure:first-child{aspect-ratio:4/5}
-  .duo figure:last-child{aspect-ratio:4/5}
-  .duo-txt{margin-top:18px;max-width:640px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .duo .cap{padding-top:8px}
+  .with-text{display:flex;flex-direction:column;justify-content:center}
 
-  .masonry{columns:3;column-gap:18px}
-  .masonry figure{break-inside:avoid;margin-bottom:18px}
-  .masonry figure:nth-child(1){aspect-ratio:3/4}
-  .masonry figure:nth-child(2){aspect-ratio:4/5}
-  .masonry figure:nth-child(3){aspect-ratio:1/1}
-  .masonry figure:nth-child(4){aspect-ratio:4/5}
-  .masonry figure:nth-child(5){aspect-ratio:1/1}
+  .masonry{columns:2;column-gap:22px}
+  .masonry figure{break-inside:avoid;margin-bottom:22px}
+  @media(min-width:860px){.masonry{columns:3}}
 
-  /* 横滑 */
+  .wide{max-width:900px;margin:0 auto}
+  .wide figure{margin-bottom:0}
+
   .rail-wrap{position:relative}
-  .rail{
-    display:flex;gap:18px;overflow-x:auto;padding-bottom:14px;
-    scroll-snap-type:x mandatory;scrollbar-width:none;
-  }
+  .rail{display:flex;gap:20px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;scrollbar-width:none}
   .rail::-webkit-scrollbar{display:none}
-  .rail figure{flex:0 0 72vw;max-width:520px;aspect-ratio:4/5;scroll-snap-align:start}
-  @media(min-width:900px){.rail figure{flex:0 0 420px}}
-  .rail-hint{color:var(--mist);font-size:12px;letter-spacing:.2em;margin-top:4px;text-align:right}
+  .rail figure{flex:0 0 70vw;max-width:400px;scroll-snap-align:start}
+  @media(min-width:900px){.rail figure{flex:0 0 380px}}
+  .rail-hint{color:var(--mist);font-size:12px;letter-spacing:.2em;margin-top:2px;text-align:right}
 
-  .solo{margin:0 auto}
-  .solo figure{aspect-ratio:16/10}
-  .solo .cap{margin-top:16px;text-align:center}
+  .duo-offset{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .duo-offset figure:last-child{margin-top:56px}
 
-  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .trio figure{aspect-ratio:3/4}
-  .trio figure:nth-child(2){transform:translateY(26px)}
-  .trio figure:nth-child(2).in{transform:translateY(26px)} /* 保持错位 */
-
-  /* 结尾 */
-  .ending{text-align:center;padding:140px 26px 90px}
+  .ending{text-align:center;padding:140px 28px 90px}
   .ending .big{font-size:clamp(24px,5vw,44px);letter-spacing:.14em;font-weight:400;line-height:1.7}
-  .ending .small{margin-top:26px;color:var(--mist);font-size:14px;letter-spacing:.24em}
-  .ending .wave{margin:34px auto 0;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--sand),transparent)}
+  .ending .small{margin-top:30px;color:var(--mist);font-size:14px;letter-spacing:.24em}
+  .ending .wave-line{margin:36px auto 0;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--sand),transparent)}
 
-  footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--mist);font-size:12px;letter-spacing:.3em}
+  footer{border-top:1px solid var(--line);padding:28px;text-align:center;color:var(--mist);font-size:12px;letter-spacing:.3em}
 
-  /* 灯箱 */
-  #lightbox{
-    position:fixed;inset:0;background:rgba(8,18,24,.94);z-index:100;
-    display:flex;align-items:center;justify-content:center;cursor:zoom-out;
-    opacity:0;pointer-events:none;transition:opacity .3s ease;
-  }
+  #lightbox{position:fixed;inset:0;background:rgba(8,18,24,.95);z-index:100;display:flex;align-items:center;justify-content:center;cursor:zoom-out;opacity:0;pointer-events:none;transition:opacity .3s ease}
   #lightbox.open{opacity:1;pointer-events:auto}
   #lightbox img{max-width:94vw;max-height:92vh;object-fit:contain;border-radius:3px}
 
   @media(max-width:760px){
-    section{padding:78px 16px 20px}
-    .masonry{columns:2;column-gap:12px}
+    section{padding:76px 18px 10px}
+    .duo,.duo-offset{grid-template-columns:1fr;gap:14px}
+    .duo-offset figure:last-child{margin-top:0}
+    .masonry{column-gap:12px}
     .masonry figure{margin-bottom:12px}
-    .duo{grid-template-columns:1fr;gap:12px}
-    .trio{grid-template-columns:1fr 1fr;gap:12px}
-    .trio figure:nth-child(3){grid-column:1/-1;aspect-ratio:4/3}
     .sec-note{display:none}
     figcaption{opacity:1;transform:none}
   }
@@ -158,7 +133,7 @@
     <figure class="reveal"><img src="img/street.jpg" alt="雨后的马路" loading="lazy"><figcaption>云压得很低，路很干净</figcaption></figure>
     <figure class="reveal"><img src="img/window.jpg" alt="住处窗外" loading="lazy"><figcaption>住处的窗外，云走得很快</figcaption></figure>
   </div>
-  <p class="cap duo-txt reveal">出站的时候天阴着，以为这趟要泡汤。结果到了下午，云缝里开始漏光——海边的天气，变得比翻书还快。</p>
+  <p class="cap reveal" style="max-width:640px;margin-top:22px">出站的时候天阴着，以为这趟要泡汤。到了下午，云缝里开始漏光——海边的天气，变得比翻书还快。</p>
 </section>
 
 <!-- 02 海边栈道 -->
@@ -169,15 +144,13 @@
     <span class="sec-note">走了一下午</span>
   </div>
   <div class="masonry reveal">
-    <figure><img src="img/boardwalk-1.jpg" alt="海边栈道" loading="lazy"><figcaption>栈道贴着海修，浪直接打在栏杆下面</figcaption></figure>
-    <figure><img src="img/boardwalk-2.jpg" alt="清澈的海水" loading="lazy"><figcaption>水很清，能看见底下的石头</figcaption></figure>
-    <figure><img src="img/rocks-wave.jpg" alt="礁石与浪花" loading="lazy"><figcaption>浪一遍一遍上来，没完没了</figcaption></figure>
-    <figure><img src="img/rocks-wave-2.jpg" alt="礁石与浪花" loading="lazy"><figcaption>在礁石边上站了很久</figcaption></figure>
+    <figure><img src="img/boardwalk-2.jpg" alt="海边栈道" loading="lazy"><figcaption>水很清，能看见底下的石头</figcaption></figure>
     <figure><img src="img/red-bridge.jpg" alt="红色栈桥" loading="lazy"><figcaption>一座红色的桥，走过去是码头</figcaption></figure>
+    <figure><img src="img/rocks-wave-2.jpg" alt="礁石与浪花" loading="lazy"><figcaption>在礁石边上站了很久</figcaption></figure>
   </div>
 </section>
 
-<!-- 03 公园 -->
+<!-- 03 公园与那棵树 -->
 <section>
   <div class="sec-head reveal">
     <span class="sec-no">03</span>
@@ -186,19 +159,17 @@
   </div>
   <div class="rail-wrap reveal">
     <div class="rail">
-      <figure><img src="img/tree.jpg" alt="海边的树" loading="lazy"><figcaption>就是这一棵，照片里出现过很多次</figcaption></figure>
+      <figure><img src="img/tree-bright.jpg" alt="海边的树" loading="lazy"><figcaption>就是这一棵，照片里出现过很多次</figcaption></figure>
       <figure><img src="img/tree-people.jpg" alt="树下拍照的人" loading="lazy"><figcaption>排队拍照的人比树还热闹</figcaption></figure>
-      <figure><img src="img/tree-bright.jpg" alt="晴天里的树" loading="lazy"><figcaption>晴天的版本</figcaption></figure>
       <figure><img src="img/lawn-path.jpg" alt="海边的草坪" loading="lazy"><figcaption>草坪修得整整齐齐</figcaption></figure>
       <figure><img src="img/grass-hill.jpg" alt="草坡" loading="lazy"><figcaption>这个小坡意外地出片</figcaption></figure>
     </div>
     <p class="rail-hint">← 左右滑动 →</p>
   </div>
-  <div class="duo" style="margin-top:18px">
-    <figure class="reveal"><img src="img/heart.jpg" alt="粉色心形装置" loading="lazy"><figcaption>海边的拍照装置，粉色的</figcaption></figure>
+  <div class="duo" style="margin-top:24px">
     <figure class="reveal"><img src="img/love-sign.jpg" alt="南海路标志" loading="lazy"><figcaption>LOVE 南海路</figcaption></figure>
+    <div class="cap reveal with-text">专程来看一棵树，说出来有点傻。但风从海上吹过来的时候，又觉得这一趟值了。</div>
   </div>
-  <p class="cap duo-txt reveal">专程来看一棵树，说出来有点傻。但风从海上吹过来的时候，又觉得这一趟值了。</p>
 </section>
 
 <!-- 04 城市与海 -->
@@ -208,9 +179,9 @@
     <h2 class="sec-title serif">城市就在海边</h2>
     <span class="sec-note">抬头是楼，低头是海</span>
   </div>
-  <div class="duo">
+  <div class="duo-offset">
     <figure class="reveal"><img src="img/lifebuoy.jpg" alt="救生圈与海信大楼" loading="lazy"><figcaption>救生圈后面就是写字楼</figcaption></figure>
-    <figure class="reveal"><img src="img/hisense-rocks.jpg" alt="礁石与大楼" loading="lazy"><figcaption>同一片海，两种背景</figcaption></figure>
+    <figure class="reveal"><img src="img/warship.jpg" alt="海军博物馆的军舰" loading="lazy"><figcaption>海军博物馆，军舰停在码头</figcaption></figure>
   </div>
 </section>
 
@@ -223,31 +194,27 @@
   </div>
   <div class="masonry reveal">
     <figure><img src="img/beach-sky.jpg" alt="金沙滩的海与天" loading="lazy"><figcaption>那天的云好得不像真的</figcaption></figure>
-    <figure><img src="img/beach-sand.jpg" alt="沙滩与浪" loading="lazy"><figcaption>沙子很软，水也不凉</figcaption></figure>
     <figure><img src="img/tent.jpg" alt="沙滩上的天幕" loading="lazy"><figcaption>搭了天幕，坐了一下午</figcaption></figure>
     <figure><img src="img/pebbles.jpg" alt="手里的小石头" loading="lazy"><figcaption>每个人都捡了几块石头</figcaption></figure>
     <figure><img src="img/shell.jpg" alt="捡到的贝壳" loading="lazy"><figcaption>桶里还有捡到的一块大贝壳</figcaption></figure>
   </div>
-  <p class="cap duo-txt reveal">捡石头这件事，三个人都很认真。捡回来的那几块现在还放在窗台上，大小都不一样，但每个人都觉得自己那块最好看。</p>
+  <p class="cap reveal" style="max-width:640px;margin-top:22px">捡石头这件事，三个人都很认真。捡回来的那几块现在还放在窗台上，大小都不一样，但每个人都觉得自己那块最好看。</p>
 </section>
 
-<!-- 06 栈桥与军舰 -->
+<!-- 06 栈桥与回澜阁 -->
 <section>
   <div class="sec-head reveal">
     <span class="sec-no">06</span>
-    <h2 class="sec-title serif">栈桥 与 军舰</h2>
+    <h2 class="sec-title serif">栈桥</h2>
     <span class="sec-note">地标打卡</span>
   </div>
-  <div class="solo reveal" style="max-width:820px">
+  <div class="wide reveal">
     <figure><img src="img/huilan-pavilion.jpg" alt="回澜阁" loading="lazy"><figcaption>回澜阁，比照片上看起来小一点</figcaption></figure>
-    <p class="cap">青岛的标志。远远地看，比挤在人群里看好看。</p>
+    <p class="cap" style="text-align:center;margin-top:18px">青岛的标志。远远地看，比挤在人群里看好看。</p>
   </div>
-  <div class="duo" style="margin-top:18px">
+  <div class="duo" style="margin-top:24px">
     <figure class="reveal"><img src="img/pavilion-sea.jpg" alt="透过松枝看回澜阁" loading="lazy"><figcaption>透过松枝看过去</figcaption></figure>
-    <figure class="reveal"><img src="img/warship.jpg" alt="海军博物馆的军舰" loading="lazy"><figcaption>海军博物馆，军舰停在码头</figcaption></figure>
-  </div>
-  <div class="solo reveal" style="max-width:820px;margin-top:18px">
-    <figure><img src="img/cannon.jpg" alt="岸上的大炮" loading="lazy"><figcaption>岸上的炮，摆拍一张</figcaption></figure>
+    <figure class="reveal"><img src="img/cannon.jpg" alt="岸上的大炮" loading="lazy"><figcaption>岸上的炮，摆拍一张</figcaption></figure>
   </div>
 </section>
 
@@ -260,23 +227,20 @@
   </div>
   <div class="duo">
     <figure class="reveal"><img src="img/food.jpg" alt="海肠捞饭" loading="lazy"><figcaption>海肠捞饭，名气大，确实好吃</figcaption></figure>
-    <div class="reveal" style="display:flex;flex-direction:column;justify-content:center">
-      <p class="cap" style="font-size:15px">来之前查了一堆攻略，最后发现最好吃的是随便走进去的店。饺子按颜色点了一份拼盘，绿色的那个最好吃。</p>
-    </div>
+    <div class="cap reveal with-text">来之前查了一堆攻略，最后发现最好吃的是随便走进去的店。饺子按颜色点了一份拼盘，绿色的那个最好吃。</div>
   </div>
 </section>
 
 <!-- 08 结尾 -->
 <section class="ending">
   <p class="big reveal">照片有点多，<br>但每一张都舍不得删。</p>
-  <div class="trio reveal" style="margin-top:64px;text-align:left">
-    <figure><img src="img/parents-2.jpg" alt="海边的合影" loading="lazy"><figcaption>船上，风很大</figcaption></figure>
-    <figure><img src="img/parents-1.jpg" alt="海边的合影" loading="lazy"><figcaption>礁石边上</figcaption></figure>
+  <div class="duo-offset reveal" style="max-width:840px;margin:60px auto 0;text-align:left">
+    <figure><img src="img/parents-2.jpg" alt="船上的合影" loading="lazy"><figcaption>船上，风很大</figcaption></figure>
     <figure><img src="img/parents-3.jpg" alt="海边的合影" loading="lazy"><figcaption>海很蓝的那天</figcaption></figure>
   </div>
   <p class="small reveal">第一次远行 · 青岛</p>
   <p class="small reveal" style="margin-top:10px">下次去哪？</p>
-  <div class="wave"></div>
+  <div class="wave-line"></div>
 </section>
 
 <footer>QINGDAO · A TRIP TO REMEMBER</footer>
@@ -284,20 +248,17 @@
 <div id="lightbox"><img src="" alt="放大查看"></div>
 
 <script>
-  // 滚动出现动画
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.12});
+  },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // 顶部进度条
   const bar = document.getElementById('progress');
   addEventListener('scroll',()=>{
     const h = document.documentElement;
     bar.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
   },{passive:true});
 
-  // 点击放大
   const box = document.getElementById('lightbox');
   const boxImg = box.querySelector('img');
   document.querySelectorAll('figure img').forEach(img=>{
